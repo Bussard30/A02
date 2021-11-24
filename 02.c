@@ -26,14 +26,16 @@ void skipNumbers(FILE *filebuf, int _n) {
     if(debug)printf("|");
 }
 
-FILE *goToA(int _n, bool b) {
-    if (b && debug) { printf("A(%d", _n); }
+FILE *goToA(int _n, bool print_debug) {
+    if (print_debug && debug) { printf("A(%d", _n); }
     FILE *filebuf = fopen("..\\\\input.txt", "r+");
+    //skips initial n k m
     skipLine(filebuf);
+    // skips all lines before a_n
     for (int i = 0; i < _n; i++) {
         skipLine(filebuf);
     }
-    if (b && debug) { printf(")"); }
+    if (print_debug && debug) { printf(")"); }
     return filebuf;
 }
 
@@ -42,7 +44,9 @@ FILE *goToB0(int _n) {
     if(debug)printf("B(%d", _n);
     FILE *filebuf = fopen("..\\\\input.txt", "r+");
     goToA(n - 1, false);
+    //skips last a_n
     skipLine(filebuf);
+    //skips empty line
     skipLine(filebuf);
     for (int i = 0; i < _n; i++) {
         skipLine(filebuf);
