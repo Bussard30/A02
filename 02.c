@@ -5,7 +5,7 @@ int n;
 int m;
 int k;
 
-bool debug = false;
+bool debug = true;
 
 int next(FILE *f) {
     int i;
